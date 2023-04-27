@@ -1,11 +1,10 @@
-package com.aws.cass.example.repository;
+package com.aws.cass;
 
 import com.datastax.oss.driver.api.core.ConsistencyLevel;
 import org.springframework.data.cassandra.core.*;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class CompanyRepository {
+@org.springframework.stereotype.Repository
+public class QueryOptions {
     public InsertOptions insertOptions() {
         return InsertOptions.builder().
                 consistencyLevel(ConsistencyLevel.LOCAL_QUORUM).

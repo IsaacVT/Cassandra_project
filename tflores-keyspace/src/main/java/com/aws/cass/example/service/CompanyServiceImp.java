@@ -1,7 +1,7 @@
 package com.aws.cass.example.service;
 
+import com.aws.cass.QueryOptions;
 import com.aws.cass.example.model.Company;
-import com.aws.cass.example.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.*;
 import org.springframework.data.cassandra.core.query.Query;
@@ -15,12 +15,12 @@ import static org.springframework.data.cassandra.core.query.Criteria.where;
 @Service
 public class CompanyServiceImp implements CompanyService {
 
-    private final CompanyRepository repository;
+    private final QueryOptions queryOptions;
     private final CassandraOperations template;
 
     @Autowired
-    public CompanyServiceImp(CompanyRepository repository, CassandraOperations template) {
-        this.repository = repository;
+    public CompanyServiceImp(QueryOptions queryOptions, CassandraOperations template) {
+        this.queryOptions = queryOptions;
         this.template = template;
     }
 
@@ -38,7 +38,7 @@ public class CompanyServiceImp implements CompanyService {
     public Company newCompany(Company newCompany) {
         Company comp = new Company(UUID.randomUUID().toString(), newCompany.getCompanyName(), newCompany.getUniqueBusinessIdentifier());
 
-        EntityWriteResult<Company> company = template.insert(comp, repository.insertOptions());
+        EntityWriteResult<Company> company = template.insert(comp, queryOptions.insertOptions());
 
         return company.getEntity();
     }
@@ -52,7 +52,7 @@ public class CompanyServiceImp implements CompanyService {
             existCompany.setCompanyName(newCompany.getCompanyName());
             existCompany.setUniqueBusinessIdentifier(newCompany.getUniqueBusinessIdentifier());
 
-            EntityWriteResult<Company> updateCompany = template.update(existCompany, repository.updateOptions());
+            EntityWriteResult<Company> updateCompany = template.update(existCompany, queryOptions.updateOptions());
             existCompany = updateCompany.getEntity();
         }
 
@@ -64,7 +64,7 @@ public class CompanyServiceImp implements CompanyService {
         Company company = template.selectOne(Query.query(where("companyId").is(id)), Company.class);
 
         if (company != null) {
-            template.delete(company, repository.deleteOptions());
+            template.delete(company, queryOptions.deleteOptions());
             return "Company deleted success";
         }
 
