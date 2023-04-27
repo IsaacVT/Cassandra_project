@@ -1,3 +1,0 @@
-# Amazon Keyspaces (for Apache Cassandra) and the Spring Application
-
-This sample application shows you how to use the [Spring Data for Apache Cassandra](https://spring.io/projects/spring-data-cassandra) library with Amazon Keyspaces (for Apache Cassandra) to build a simple web application. The application uses the Spring Data Cassandra library to store and retrieve data from Amazon Keyspaces (for Apache Cassandra).
