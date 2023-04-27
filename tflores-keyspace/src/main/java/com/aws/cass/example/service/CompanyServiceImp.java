@@ -37,9 +37,7 @@ public class CompanyServiceImp implements CompanyService {
     @Override
     public Company newCompany(Company newCompany) {
         Company comp = new Company(UUID.randomUUID().toString(), newCompany.getCompanyName(), newCompany.getUniqueBusinessIdentifier());
-
         EntityWriteResult<Company> company = template.insert(comp, queryOptions.insertOptions());
-
         return company.getEntity();
     }
 
