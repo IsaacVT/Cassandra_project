@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>software.aws.mcs</groupId>
-	<artifactId>aws-keyspaces-spring-demo</artifactId>
+	<artifactId>tflores-keyspace</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>KeyspacesSpringDemo</name>
 	<description>Demo project for Amazon Keyspaces and Spring Boot</description>

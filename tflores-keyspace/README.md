@@ -93,7 +93,7 @@ Below shown a successful result:
 ```
 2021-06-07 18:14:32.649  INFO 8526 --- [main] c.a.m.s.KeyspacesSpringApplicationTests  : Returned value:00-00-0000
 2021-06-07 18:14:32.650  INFO 8526 --- [main] c.a.m.s.KeyspacesSpringApplicationTests  : CompanyId:2e74626a-f2dd-4791-88ae-f6d478728830
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.738 s - in com.aws.mcs.springsample.KeyspacesSpringApplicationTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.738 s - in com.aws.mcs.springsample.TFloresKeyspaceApplicationTests
 [INFO] Results: 
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------

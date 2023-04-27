@@ -1,4 +1,4 @@
-package com.aws.mcs.springsample.repository;
+package com.aws.cass.example.repository;
 
 import com.datastax.oss.driver.api.core.ConsistencyLevel;
 import org.springframework.data.cassandra.core.*;

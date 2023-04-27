@@ -1,4 +1,4 @@
-package com.aws.mcs.springsample;
+package com.aws.cass;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import org.slf4j.Logger;
@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 import java.security.NoSuchAlgorithmException;
 
 @SpringBootApplication
-public class KeyspacesSpringApplication {
+public class TFloresKeyspaceApplication {
 	public static void main(String[] args) {
-		Logger LOGGER = LoggerFactory.getLogger(KeyspacesSpringApplication.class);
-		SpringApplication.run(KeyspacesSpringApplication.class, args);
+		Logger LOGGER = LoggerFactory.getLogger(TFloresKeyspaceApplication.class);
+		SpringApplication.run(TFloresKeyspaceApplication.class, args);
 	}
 
 	@Bean
@@ -21,4 +21,3 @@ public class KeyspacesSpringApplication {
 		return new AppConfig().session();
 	}
 }
-

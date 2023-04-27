@@ -1,7 +1,7 @@
-package com.aws.mcs.springsample.controller;
+package com.aws.cass.example.controller;
 
-import com.aws.mcs.springsample.model.Company;
-import com.aws.mcs.springsample.service.CompanyService;
+import com.aws.cass.example.model.Company;
+import com.aws.cass.example.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

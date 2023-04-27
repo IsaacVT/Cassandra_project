@@ -1,7 +1,7 @@
-package com.aws.mcs.springsample.service;
+package com.aws.cass.example.service;
 
-import com.aws.mcs.springsample.model.Company;
-import com.aws.mcs.springsample.repository.CompanyRepository;
+import com.aws.cass.example.model.Company;
+import com.aws.cass.example.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.*;
 import org.springframework.data.cassandra.core.query.Query;

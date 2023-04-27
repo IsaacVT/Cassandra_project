@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-package com.aws.mcs.springsample.model;
+package com.aws.cass.example.model;
 
 import lombok.*;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;

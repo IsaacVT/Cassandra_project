@@ -1,6 +1,6 @@
-package com.aws.mcs.springsample.service;
+package com.aws.cass.example.service;
 
-import com.aws.mcs.springsample.model.Company;
+import com.aws.cass.example.model.Company;
 
 import java.util.List;
 

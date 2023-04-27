@@ -1,4 +1,4 @@
-package com.aws.mcs.springsample;
+package com.aws.cass;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.config.DriverConfigLoader;

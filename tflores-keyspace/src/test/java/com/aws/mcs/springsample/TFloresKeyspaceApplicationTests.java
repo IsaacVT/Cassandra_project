@@ -22,8 +22,8 @@ import java.util.UUID;
 import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
 
 @SpringBootTest
-public class KeyspacesSpringApplicationTests {
-    private static final Logger LOGGER = LoggerFactory.getLogger(KeyspacesSpringApplicationTests.class);
+public class TFloresKeyspaceApplicationTests {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TFloresKeyspaceApplicationTests.class);
 
     @Autowired
     private CqlSession cqlSession;
