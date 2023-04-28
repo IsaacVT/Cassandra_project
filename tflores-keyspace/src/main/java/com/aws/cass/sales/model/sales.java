@@ -1,25 +1,25 @@
 package com.aws.cass.sales.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 @Table
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class sales {
+public class Sales {
     @PrimaryKey
-    private final String saleId;
-    private Timestamp saleDate;
-    private String clientName;
-    private Map<String,Integer> products;
-    private Float total;
+    private UUID sale_id;
+    private Timestamp sale_date;
+    private String client_name;
+    private Set<String> products;
+    private BigDecimal total;
 }
