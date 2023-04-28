@@ -11,7 +11,8 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @ToString
 public class Company {
 
-    @PrimaryKey private final String companyId;
+    @PrimaryKey
+    private final String companyId;
     private String companyName;
     private String uniqueBusinessIdentifier;
 }

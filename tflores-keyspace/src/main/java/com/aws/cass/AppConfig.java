@@ -21,11 +21,11 @@ public class AppConfig {
     @Primary
     public @Bean
     CqlSession session() throws NoSuchAlgorithmException {
-        return CqlSession.builder().
-                withConfigLoader(DriverConfigLoader.fromFile(driverConfig)).
-                withAuthCredentials(username, password).
-                withSslContext(SSLContext.getDefault()).
-                withKeyspace("tutorialkeyspace").
-                build();
+        return CqlSession.builder()
+                .withConfigLoader(DriverConfigLoader.fromFile(driverConfig))
+                .withAuthCredentials(username, password)
+                .withSslContext(SSLContext.getDefault())
+                .withKeyspace("tflores")
+                .build();
     }
 }
