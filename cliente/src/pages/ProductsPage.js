@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { Button, Container, Stack, Typography } from '@mui/material';
 // Services
-import { GetCartUser } from '../services/cart-service';
 import { GetProducts } from '../services/product-service';
 // components
 import { ProductCartWidget, ProductList, ProductModalNew } from '../sections/@dashboard/products';
@@ -14,7 +13,6 @@ export default function ProductsPage() {
 
   const [list, setList] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     Promise.resolve(
@@ -30,21 +28,6 @@ export default function ProductsPage() {
       })))
     })
   }, [setList]);
-
-  useEffect(() => {
-    const data = window.localStorage.getItem('infoUser');
-    const info = JSON.parse(data);
-    const { role, user } = info
-    if (role === 'CLIENT') {
-      setVisible(true)
-    }
-
-    Promise.resolve(
-      GetCartUser(user)
-    ).then((res) => {
-      window.localStorage.setItem('prodList', JSON.stringify(res.products))
-    })
-  }, [])
 
   const props = {
     products: list,
