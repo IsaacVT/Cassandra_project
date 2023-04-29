@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -43,32 +42,19 @@ Header.propTypes = {
 
 export default function Header({ onOpenNav }) {
 
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const data = window.localStorage.getItem('infoUser');
-    const info = JSON.parse(data);
-    const { role } = info
-    if (role === 'ADMIN') {
-      setVisible(true)
-    }
-  }, [setVisible])
-
   return (
     <StyledRoot>
       <StyledToolbar>
-        {visible && (
-          <IconButton
-            onClick={onOpenNav}
-            sx={{
-              mr: 1,
-              color: 'text.primary',
-              display: { lg: 'none' },
-            }}
-          >
-            <Iconify icon="eva:menu-2-fill" />
-          </IconButton>
-        )}
+        <IconButton
+          onClick={onOpenNav}
+          sx={{
+            mr: 1,
+            color: 'text.primary',
+            display: { lg: 'none' },
+          }}
+        >
+          <Iconify icon="eva:menu-2-fill" />
+        </IconButton>
 
         <Box sx={{ flexGrow: 1 }} />
 
