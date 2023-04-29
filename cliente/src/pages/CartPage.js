@@ -2,35 +2,16 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 // @mui
-import { Button, Card, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Button, Card, Container, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, TextField, Typography } from '@mui/material';
 // Icons
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded';
-import RemoveCircleRoundedIcon from '@mui/icons-material/RemoveCircleRounded';
 import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded';
 // Service
 import { AddNewOrder } from '../services/order-service';
 // Utils
 import { fCurrency } from '../utils/formatNumber';
 import { CreateNotification } from '../utils/notification';
-import { FormatData, FormatOrderData, GetLocalUser, GetProdsData, UpdateLocalProd } from '../utils/localData';
-
-// ----------------------------------------------------------------------
-
-const StyledProductImg = styled('img')({
-    top: 0,
-    width: 'auto',
-    height: 'auto',
-    objectFit: 'cover',
-    borderRadius: '25px'
-});
-
-const styleBtn = {
-    borderRadius: '100%',
-    p: 3,
-    width: 'auto',
-};
+import { FormatData, GetProdsData, UpdateLocalProd } from '../utils/localData';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +22,6 @@ export default function CartPage() {
     const [client, setClient] = useState("")
 
     let totalPrice = 0
-    let totalSend = 0
 
     function getTotal(price, amount) {
         const p1 = Number(price)
@@ -64,50 +44,15 @@ export default function CartPage() {
         }
     }, [])
 
-    const handleRemove = (e) => {
-        let finalUpdate = null;
-        const index = products.findIndex(product => product.id === e.id)
-        const prodUpdate = { ...products[index] }
-
-        if (prodUpdate.amount > 1) {
-            prodUpdate.amount -= 1;
-            prodUpdate.total -= Number(prodUpdate.price)
-            const newList = [...products]
-            newList[index] = prodUpdate;
-            finalUpdate = newList;
-        } else {
-            const updateList = products.filter(product => product.id !== prodUpdate.id)
-            finalUpdate = updateList;
-        }
-
-        setProducts(finalUpdate)
-    }
-
-    const handleAdd = (e) => {
-        const index = products.findIndex(product => product.id === e.id)
-        const prodUpdate = { ...products[index] }
-
-        if (prodUpdate.amount < prodUpdate.stock) {
-            prodUpdate.amount += 1;
-            prodUpdate.total = getTotal(prodUpdate.price, prodUpdate.amount)
-            const newList = [...products]
-            newList[index] = prodUpdate;
-            setProducts(newList)
-        }
-    }
-
     function getList() {
         const listProd = products;
 
         listProd.forEach(product => {
             totalPrice += Number(product.total)
-            totalSend += Number(product.send)
         })
 
         return listProd;
     }
-
-    const getTotalFinal = () => totalPrice + totalSend;
 
     let data = getList();
 
@@ -116,6 +61,7 @@ export default function CartPage() {
     }
 
     const returnStore = () => {
+        data = []
         const dataFormated = FormatData(data)
 
         UpdateLocalProd(dataFormated)
@@ -138,7 +84,6 @@ export default function CartPage() {
             AddNewOrder(order)
         ).then((res) => {
             CreateNotification({ status: "order_placed", order: res.sale_id })
-            data = []
             returnStore()
         }).catch((err) => {
             console.log("🚀 ~ file: CartPage.js:154 ~ ).then ~ err:", err)
@@ -196,13 +141,7 @@ export default function CartPage() {
                                                 <TableCell align='center' sx={{ fontSize: 'h6.fontSize' }}>{fCurrency(price)}</TableCell>
 
 
-                                                <TableCell align='right'>
-                                                    <IconButton sx={{ ...styleBtn }} color="error" onClick={() => {
-                                                        handleRemove({ id });
-                                                    }}>
-                                                        <RemoveCircleRoundedIcon sx={{ fontSize: 'h2.fontSize' }} color="error" />
-                                                    </IconButton>
-                                                </TableCell>
+                                                <TableCell align='right' />
 
                                                 <TableCell align='center'>
                                                     <Typography variant='h6'>
@@ -210,13 +149,7 @@ export default function CartPage() {
                                                     </Typography>
                                                 </TableCell>
 
-                                                <TableCell align='left'>
-                                                    <IconButton sx={{ ...styleBtn }} color='success' onClick={() => {
-                                                        handleAdd({ id })
-                                                    }}>
-                                                        <AddCircleRoundedIcon sx={{ fontSize: 'h2.fontSize' }} color={row.amount < row.stock ? 'success' : 'disabled'} />
-                                                    </IconButton>
-                                                </TableCell>
+                                                <TableCell align='left' />
 
                                                 <TableCell align='center' sx={{ fontSize: 'h6.fontSize' }}>{fCurrency(total)}</TableCell>
                                             </TableRow>
@@ -256,7 +189,7 @@ export default function CartPage() {
                                 <TableRow>
                                     <TableCell align='center'>
                                         <Button variant='contained' color='warning' sx={{ width: '100%', fontSize: 'h6.fontSize' }} onClick={handleReturn} startIcon={<KeyboardReturnRoundedIcon sx={{ fontSize: 'h1.fontSize' }} />}>
-                                            See products
+                                            Cancel
                                         </Button>
                                     </TableCell>
                                     <TableCell colSpan={5} />

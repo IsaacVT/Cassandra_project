@@ -27,7 +27,7 @@ export default function AccountPopover() {
 
   const handleLogout = () => {
     ResetLocalData()
-    navigate('/login', { replace: true });
+    navigate('/dashboard/products', { replace: true });
   };
 
   return (
@@ -84,7 +84,7 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick={handleLogout} sx={{ m: 1 }}>
-          Logout
+          Reset app
         </MenuItem>
       </Popover>
     </>
