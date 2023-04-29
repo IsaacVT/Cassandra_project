@@ -18,34 +18,18 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/products" />, index: true },
-        // { path: 'app', element: <DashboardAppPage /> },
-        // { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'cart', element: <CartPage /> },
         { path: 'order', element: <OrderPage /> },
         { path: 'shopping', element: <ShoppingPage /> },
       ],
     },
-    // {
-    //   path: '/login',
-    //   element: <LoginPage />,
-    // },
-    // {
-    //   path: 'register',
-    //   element: <RegisterPage />,
-    // },
     {
       element: <SimpleLayout />,
       children: [
         { element: <Navigate to="/dashboard" />, index: true },
-        // { path: '404', element: <Page404 /> },
-        // { path: '*', element: <Navigate to="/404" /> },
       ],
     },
-    // {
-    //   path: '*',
-    //   element: <Navigate to="/404" replace />,
-    // },
   ]);
 
   return routes;
