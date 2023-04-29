@@ -8,30 +8,30 @@ import { Paper, Button, IconButton, Typography, Container, Table, TableContainer
 import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded';
 import Iconify from '../components/iconify';
 // Seccion
-import { OrderModalDelete, OrderModalEdit } from '../sections/@dashboard/order';
+import { ShoppingModalDelete, ShoppingModalEdit, ShoppingModalNew } from '../sections/@dashboard/shopping';
 // Utils
 import { fCurrency } from '../utils/formatNumber';
 // Service
-import { GetAllOrders } from '../services/order-service';
+import { GetAllShoppings } from '../services/shopping-service';
 
 // ----------------------------------------------------------------------
 
-export default function OrderPage() {
+export default function ShoppingPage() {
     const navigate = useNavigate();
 
-    const [orders, setOrders] = useState([])
-    const [orderSelected, setOrderSelected] = useState(null)
+    const [shoppings, setShoppings] = useState([])
+    const [shoppingSelected, setShoppingSelected] = useState(null)
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
         Promise.resolve(
-            GetAllOrders()
+            GetAllShoppings()
         ).then((response) => {
-            setOrders(response.map((order) => ({
-                id: order.sale_id,
-                name: order.client_name,
-                products: transformList(order.products),
-                total: order.total
+            setShoppings(response.map((shopping) => ({
+                id: shopping.purchase_id,
+                name: shopping.provider_name,
+                products: transformList(shopping.products),
+                total: shopping.total
             })))
         })
     }, [])
@@ -47,7 +47,7 @@ export default function OrderPage() {
         return (p3.toFixed(2))
     }
 
-    const data = orders
+    const data = shoppings
 
     const handleCloseMenu = () => {
         setOpen(null);
@@ -65,7 +65,10 @@ export default function OrderPage() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align='center' colSpan={10} sx={{ fontSize: '15px' }}>Orders</TableCell>
+                                    <TableCell align='center' colSpan={10} sx={{ fontSize: '15px' }}>Shoppings</TableCell>
+                                    <TableCell align='right' colSpan={2}>
+                                        <ShoppingModalNew />
+                                    </TableCell>
                                 </TableRow>
                             </TableHead>
 
@@ -79,13 +82,13 @@ export default function OrderPage() {
                                                 }}
                                             >
                                                 <Typography variant="h3" paragraph>
-                                                    Not orders found
+                                                    Not shoppings found
                                                 </Typography>
 
                                                 <Typography variant="body1">
                                                     Please return to the store <br />
                                                     to choose one of our products <br />
-                                                    and create a new order
+                                                    and create a new shopping
                                                 </Typography>
                                             </Paper>
                                         </TableCell>
@@ -99,16 +102,16 @@ export default function OrderPage() {
 
                                         <TableRow>
                                             <TableCell colSpan={10}>
-                                                <Divider>ORDER: {id}</Divider>
+                                                <Divider>SHOPPING: {id}</Divider>
                                             </TableCell>
                                         </TableRow>
 
                                         <TableRow>
-                                            <TableCell colSpan={9} align='left'>Client : {name}</TableCell>
+                                            <TableCell colSpan={9} align='left'>Provider : {name}</TableCell>
                                             <TableCell colSpan={1} align='right'>
                                                 <IconButton size="large" color="inherit" onClick={(event) => {
                                                     setOpen(event.currentTarget)
-                                                    setOrderSelected({ row })
+                                                    setShoppingSelected({ row })
                                                 }}>
                                                     <Iconify icon={'eva:more-vertical-fill'} />
                                                 </IconButton>
@@ -162,7 +165,7 @@ export default function OrderPage() {
                 }}
             >
 
-                <OrderModalDelete row={orderSelected} />
+                <ShoppingModalDelete row={shoppingSelected} />
             </Popover>
         </>
     )

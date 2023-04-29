@@ -48,6 +48,7 @@ export function GetProdsData() {
     const extistList = window.localStorage.getItem('prodListTmp');
 
     if (extistList === null) {
+        window.localStorage.setItem('prodList', '{}');
         prodsTmp = window.localStorage.getItem('prodList');
     } else {
         prodsTmp = extistList;
