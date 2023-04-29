@@ -65,7 +65,7 @@ export default function OrderModalDelete({ row }) {
                         <Stack alignItems={'center'} spacing={8} sx={{ mt: 5, mb: 6 }}>
 
                             <Typography variant="h4">
-                                ¿Delete order?
+                                ¿Seguro que deseas matar a este inocente?
                             </Typography>
 
                             <Typography variant="h6">
@@ -78,7 +78,7 @@ export default function OrderModalDelete({ row }) {
                                 </Button>
 
                                 <Button onClick={handleDelete} variant="contained" color="error" endIcon={<DeleteRoundedIcon sx={{ fontSize: 'h1.fontSize' }} />} sx={{ width: 'auto' }}>
-                                    Delete
+                                    Matar
                                 </Button>
                             </Stack>
                         </Stack>

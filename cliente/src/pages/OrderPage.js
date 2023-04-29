@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { noCase } from 'change-case';
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Paper, Button, IconButton, Typography, Container, Table, TableContainer, TableBody, TableRow, TableCell, TableHead, Card, Divider, Stack, Popover, TableFooter } from '@mui/material';
+import { Paper, IconButton, Typography, Container, Table, TableContainer, TableBody, TableRow, TableCell, TableHead, Card, Divider, Popover } from '@mui/material';
 // Icons
-import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded';
 import Iconify from '../components/iconify';
 // Seccion
-import { OrderModalDelete, OrderModalEdit } from '../sections/@dashboard/order';
+import { OrderModalDelete } from '../sections/@dashboard/order';
 // Utils
 import { fCurrency } from '../utils/formatNumber';
 // Service
@@ -17,7 +14,6 @@ import { GetAllOrders } from '../services/order-service';
 // ----------------------------------------------------------------------
 
 export default function OrderPage() {
-    const navigate = useNavigate();
 
     const [orders, setOrders] = useState([])
     const [orderSelected, setOrderSelected] = useState(null)

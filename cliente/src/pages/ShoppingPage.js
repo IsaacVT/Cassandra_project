@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { noCase } from 'change-case';
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Paper, Button, IconButton, Typography, Container, Table, TableContainer, TableBody, TableRow, TableCell, TableHead, Card, Divider, Stack, Popover, TableFooter } from '@mui/material';
+import { Paper, IconButton, Typography, Container, Table, TableContainer, TableBody, TableRow, TableCell, TableHead, Card, Divider, Popover } from '@mui/material';
 // Icons
-import KeyboardReturnRoundedIcon from '@mui/icons-material/KeyboardReturnRounded';
 import Iconify from '../components/iconify';
 // Seccion
-import { ShoppingModalDelete, ShoppingModalEdit, ShoppingModalNew } from '../sections/@dashboard/shopping';
+import { ShoppingModalDelete, ShoppingModalNew } from '../sections/@dashboard/shopping';
 // Utils
 import { fCurrency } from '../utils/formatNumber';
 // Service
@@ -17,7 +14,6 @@ import { GetAllShoppings } from '../services/shopping-service';
 // ----------------------------------------------------------------------
 
 export default function ShoppingPage() {
-    const navigate = useNavigate();
 
     const [shoppings, setShoppings] = useState([])
     const [shoppingSelected, setShoppingSelected] = useState(null)
@@ -56,7 +52,7 @@ export default function ShoppingPage() {
     return (
         <>
             <Helmet>
-                <title> Sales | TFlores </title>
+                <title> Shopping | TFlores </title>
             </Helmet>
 
             <Container>
@@ -65,7 +61,7 @@ export default function ShoppingPage() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align='center' colSpan={10} sx={{ fontSize: '15px' }}>Shoppings</TableCell>
+                                    <TableCell align='center' colSpan={8} sx={{ fontSize: '15px' }}>Shoppings</TableCell>
                                     <TableCell align='right' colSpan={2}>
                                         <ShoppingModalNew />
                                     </TableCell>
