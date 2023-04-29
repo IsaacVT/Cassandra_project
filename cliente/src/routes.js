@@ -6,6 +6,7 @@ import SimpleLayout from './layouts/simple/SimpleLayout';
 import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
 import ProductsPage from './pages/ProductsPage';
+import ShoppingPage from './pages/ShoppingPage';
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ export default function Router() {
         { path: 'products', element: <ProductsPage /> },
         { path: 'cart', element: <CartPage /> },
         { path: 'order', element: <OrderPage /> },
+        { path: 'shopping', element: <ShoppingPage /> },
       ],
     },
     // {
