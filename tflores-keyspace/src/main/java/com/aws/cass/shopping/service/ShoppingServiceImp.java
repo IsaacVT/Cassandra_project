@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.EntityWriteResult;
 import org.springframework.data.cassandra.core.query.Query;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -19,6 +20,7 @@ import java.util.UUID;
 
 import static org.springframework.data.cassandra.core.query.Criteria.where;
 
+@Service
 public class ShoppingServiceImp implements ShoppingService {
     private final QueryOptions queryOptions;
     private final CassandraOperations template;
