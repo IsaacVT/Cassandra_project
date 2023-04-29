@@ -1,23 +1,3 @@
-
-export const SaveLocalData = (data) => {
-    const { user, role, products } = data
-
-    const info = {
-        'user': user,
-        'role': role
-    }
-
-    const prods = [products]
-    const prodMap = new Map()
-
-    prods.forEach(product => {
-        prodMap.set(product.id, product.amount);
-    })
-
-    SaveLocalList(prodMap, 0)
-    window.localStorage.setItem('infoUser', JSON.stringify(info))
-}
-
 const SaveLocalList = (tmpList, where) => {
     if (where === 0) {
         window.localStorage.setItem('prodList', JSON.stringify(tmpList))

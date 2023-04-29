@@ -42,6 +42,7 @@ export default function ProductCartWidget() {
     setCount(GetAmountProds())
   }, [])
 
+
   const handleRedirect = () => {
     navigate('/dashboard/cart', { replace: true });
   };
