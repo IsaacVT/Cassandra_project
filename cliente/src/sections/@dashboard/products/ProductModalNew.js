@@ -1,6 +1,6 @@
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
-import { Button, Grid, IconButton, Modal } from '@mui/material';
+import { Button, Grid, Modal } from '@mui/material';
 import { useState } from 'react';
 import ProductGridNew from './ProductGridNew';
 
@@ -25,7 +25,7 @@ const styleBtn = {
     transform: 'translate(-35%, -35%)',
     bgcolor: 'background.default',
     boxShadow: 24,
-    p: 1,
+    p: 2,
     width: 'auto',
 };
 
@@ -44,11 +44,9 @@ export default function ProductModalNew() {
             <Button variant="outlined" onClick={handleOpen} startIcon={<AddCircleOutlineRoundedIcon />} > Agregar producto </Button>
 
             <Modal open={open} >
-                <Grid sx={{ ...style, width: 500 }} container spacing={1}>
-                    <Button sx={{ ...styleBtn }} onClick={handleClose} variant="contained" color="error">
-                        <IconButton color="error">
-                            <CancelRoundedIcon sx={{ fontSize: 'h1.fontSize' }} />
-                        </IconButton>
+                <Grid sx={{ ...style, width: 700 }} container spacing={1}>
+                    <Button sx={{ ...styleBtn }} onClick={handleClose} variant="contained" color="error" >
+                        <CancelRoundedIcon sx={{ fontSize: 'h1.fontSize' }} color="error" />
                     </Button>
 
                     <ProductGridNew />

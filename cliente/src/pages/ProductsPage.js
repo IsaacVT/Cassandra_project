@@ -6,6 +6,8 @@ import { Button, Container, Stack, Typography } from '@mui/material';
 import { GetProducts } from '../services/product-service';
 // components
 import { ProductCartWidget, ProductList, ProductModalNew } from '../sections/@dashboard/products';
+// Mock
+import DefaultImg from '../_mock/product'
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +26,7 @@ export default function ProductsPage() {
         stock: product.amount,
         price: product.price,
         description: 'Belle oze amariyo, semidesnude acompañado de flores varias',
-        cover: '/assets/illustrations/illustration_xv.png'
+        cover: product.cover || DefaultImg,
       })))
     })
   }, [setList]);

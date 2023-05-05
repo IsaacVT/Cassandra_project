@@ -51,7 +51,7 @@ export default function ProductModalEdit({ product }) {
             </MenuItem>
 
             <Modal open={open} >
-                <Grid sx={{ ...style, width: 500 }} container spacing={1}>
+                <Grid sx={{ ...style, width: 700 }} container spacing={1}>
                     <Button sx={{ ...styleBtn }} onClick={handleClose} variant="contained" color="error">
                         <CancelRoundedIcon sx={{ fontSize: 'h1.fontSize' }} color="error" />
                     </Button>

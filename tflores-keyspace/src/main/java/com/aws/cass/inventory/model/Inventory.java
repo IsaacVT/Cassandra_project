@@ -19,4 +19,5 @@ public class Inventory {
     private String name;
     private Integer amount;
     private BigDecimal price;
+    private String cover;
 }

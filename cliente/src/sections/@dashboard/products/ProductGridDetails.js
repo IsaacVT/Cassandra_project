@@ -19,7 +19,7 @@ ProductGridDetails.propTypes = {
 };
 
 export default function ProductGridDetails({ product }) {
-    const { id, name, cover, price, send, description, type } = product;
+    const { id, name, cover, price, description } = product;
     const priceBefore = price + (price * 0.2)
 
     return (
