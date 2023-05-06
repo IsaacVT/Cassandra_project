@@ -8,6 +8,7 @@ import org.springframework.data.cassandra.core.EntityWriteResult;
 import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -64,6 +65,38 @@ public class InventoryServiceImp implements InventoryService {
         }
 
         return new Inventory();
+    }
+
+    @Override
+    public void addInInventory(List<Inventory> prods) {
+        for (Inventory prod : prods) {
+            Inventory product = template.selectOne(Query.query(where("name").is(prod.getName())).withAllowFiltering(), Inventory.class);
+
+            if (product != null) {
+                int subtractAmount = prod.getAmount();
+                int actualAmount = product.getAmount();
+                int newAmount = actualAmount + subtractAmount;
+                product.setAmount(newAmount);
+
+                template.update(product, queryOptions.updateOptions());
+            }
+        }
+    }
+
+    @Override
+    public void subtractInInventory(List<Inventory> prods) {
+        for (Inventory prod : prods) {
+            Inventory product = template.selectOne(Query.query(where("name").is(prod.getName())).withAllowFiltering(), Inventory.class);
+
+            if (product != null) {
+                int subtractAmount = prod.getAmount();
+                int actualAmount = product.getAmount();
+                int newAmount = Math.max(0, actualAmount - subtractAmount);
+                product.setAmount(newAmount);
+
+                template.update(product, queryOptions.updateOptions());
+            }
+        }
     }
 
     @Override

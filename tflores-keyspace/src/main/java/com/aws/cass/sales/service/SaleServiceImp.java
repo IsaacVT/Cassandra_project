@@ -2,6 +2,7 @@ package com.aws.cass.sales.service;
 
 import com.aws.cass.QueryOptions;
 import com.aws.cass.inventory.model.Inventory;
+import com.aws.cass.inventory.service.InventoryService;
 import com.aws.cass.sales.model.Sales;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -25,17 +26,20 @@ public class SaleServiceImp implements SaleService {
 
     private final QueryOptions queryOptions;
     private final CassandraOperations template;
+    private final InventoryService inventoryService;
     private final ObjectMapper mapper;
+    private List<Inventory> listProds;
 
     @Autowired
-    public SaleServiceImp(QueryOptions queryOptions, CassandraOperations template, ObjectMapper mapper) {
+    public SaleServiceImp(QueryOptions queryOptions, CassandraOperations template, InventoryService inventoryService, ObjectMapper mapper) {
         this.queryOptions = queryOptions;
         this.template = template;
         this.mapper = mapper;
+        this.inventoryService = inventoryService;
     }
 
     private BigDecimal getTotalFromJSON(String prodJSON) throws JsonProcessingException {
-        List<Inventory> listProds = mapper.readValue(prodJSON, new TypeReference<>() {});
+        listProds = mapper.readValue(prodJSON, new TypeReference<>() {});
 
         BigDecimal total = BigDecimal.ZERO;
         for (Inventory prod : listProds) {
@@ -71,6 +75,8 @@ public class SaleServiceImp implements SaleService {
         newSale.setTotal(getTotalFromJSON(newSale.getProducts().toString()));
 
         EntityWriteResult<Sales> saleInsert = template.insert(newSale, queryOptions.insertOptions());
+
+        inventoryService.subtractInInventory(listProds);
         return saleInsert.getEntity();
     }
 

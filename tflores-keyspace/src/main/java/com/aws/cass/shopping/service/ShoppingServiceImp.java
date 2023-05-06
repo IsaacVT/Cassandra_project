@@ -2,6 +2,7 @@ package com.aws.cass.shopping.service;
 
 import com.aws.cass.QueryOptions;
 import com.aws.cass.inventory.model.Inventory;
+import com.aws.cass.inventory.service.InventoryService;
 import com.aws.cass.shopping.model.Shopping;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,17 +25,20 @@ import static org.springframework.data.cassandra.core.query.Criteria.where;
 public class ShoppingServiceImp implements ShoppingService {
     private final QueryOptions queryOptions;
     private final CassandraOperations template;
+    private final InventoryService inventoryService;
     private final ObjectMapper mapper;
+    private List<Inventory> listProds;
 
     @Autowired
-    public ShoppingServiceImp(QueryOptions queryOptions, CassandraOperations template, ObjectMapper mapper) {
+    public ShoppingServiceImp(QueryOptions queryOptions, CassandraOperations template, InventoryService inventoryService, ObjectMapper mapper) {
         this.queryOptions = queryOptions;
         this.template = template;
         this.mapper = mapper;
+        this.inventoryService = inventoryService;
     }
 
     private BigDecimal getTotalFromJSON(String prodJSON) throws JsonProcessingException {
-        List<Inventory> listProds = mapper.readValue(prodJSON, new TypeReference<>() {});
+        listProds = mapper.readValue(prodJSON, new TypeReference<>() {});
 
         BigDecimal total = BigDecimal.ZERO;
         for (Inventory prod : listProds) {
@@ -71,6 +75,7 @@ public class ShoppingServiceImp implements ShoppingService {
 
         EntityWriteResult<Shopping> result = template.insert(shopping, queryOptions.insertOptions());
 
+        inventoryService.addInInventory(listProds);
         return result.getEntity();
     }
 

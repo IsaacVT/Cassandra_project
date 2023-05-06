@@ -10,5 +10,7 @@ public interface InventoryService {
     Inventory getInventoryById(UUID id);
     Inventory newInventory (Inventory product);
     Inventory updateInventory (UUID id, Inventory product);
+    void addInInventory (List<Inventory> prods);
+    void subtractInInventory(List<Inventory> prods);
     String deteleInventory (UUID id);
 }
