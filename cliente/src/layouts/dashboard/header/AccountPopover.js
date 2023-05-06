@@ -15,7 +15,7 @@ export default function AccountPopover() {
 
   const [open, setOpen] = useState(null);
 
-  const { displayName, email, photoURL } = account;
+  const { displayName, email, logo } = account;
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -49,7 +49,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={photoURL} alt="photoURL" />
+        <Avatar src={logo} alt="logo" />
       </IconButton>
 
       <Popover
