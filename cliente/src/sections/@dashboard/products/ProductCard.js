@@ -17,7 +17,7 @@ import ProductModalEdit from './ProductModalEdit';
 const StyledProductImg = styled('img')({
   top: 0,
   width: '100%',
-  height: '100%',
+  height: '115%',
   objectFit: 'cover',
   position: 'absolute',
 });
@@ -61,12 +61,13 @@ export default function ProductCard({ product, editable }) {
 
           <Box sx={{ pt: '100%', position: 'relative' }}>
             <StyledProductImg alt={name} src={cover} />
+
             <Avatar color="secondary" onClick={() => { addToCart({ id, name, price }) }} sx={{ ...styBtn }}>
               <AddShoppingCartRoundedIcon color='action' />
             </Avatar>
           </Box>
 
-          <Stack spacing={1.5} sx={{ p: 3 }}>
+          <Stack spacing={1.5} sx={{ p: 3, mt: 5 }}>
             <Typography sx={{ fontSize: 'h5.fontSize' }}>
               {name}
             </Typography>

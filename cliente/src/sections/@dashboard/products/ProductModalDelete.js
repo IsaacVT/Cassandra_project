@@ -70,7 +70,7 @@ export default function ProductModalDelete({ product }) {
             </MenuItem>
 
             <Modal open={open} >
-                <Grid sx={{ ...style, width: '600px' }} container spacing={1}>
+                <Grid sx={{ ...style, width: 700 }} container spacing={1}>
 
                     <Grid item xs={6}>
                         <Box sx={{ pt: '100%', position: 'relative', mt: 1 }}>
@@ -79,18 +79,14 @@ export default function ProductModalDelete({ product }) {
                     </Grid>
 
                     <Grid item xs={6} >
-                        <Stack alignItems={'center'} spacing={8} sx={{ mt: 5, mb: 6 }}>
+                        <Stack alignItems={'center'} spacing={8} sx={{ mt: 8, mb: 10 }}>
 
                             <Typography variant="h4">
-                                ¿Delete?
+                                Delete product?
                             </Typography>
 
                             <Typography variant="h5">
                                 {product.name}
-                            </Typography>
-
-                            <Typography variant="h4">
-                                ¿Seguro que deseas matar a este inocente?
                             </Typography>
 
                             <Stack direction={'row'} spacing={6}>
@@ -99,7 +95,7 @@ export default function ProductModalDelete({ product }) {
                                 </Button>
 
                                 <Button onClick={deleteProd} variant="contained" color="error" endIcon={<DeleteRoundedIcon sx={{ fontSize: 'h1.fontSize' }} />} sx={{ width: 'auto' }}>
-                                    Matar
+                                    Delete
                                 </Button>
                             </Stack>
                         </Stack>

@@ -59,17 +59,17 @@ export default function OrderModalDelete({ row }) {
             </MenuItem>
 
             <Modal open={open} >
-                <Grid sx={{ ...style, width: 400 }} container spacing={1}>
+                <Grid sx={{ ...style, width: 500 }} container spacing={1}>
 
                     <Grid item xs={12} >
                         <Stack alignItems={'center'} spacing={8} sx={{ mt: 5, mb: 6 }}>
 
                             <Typography variant="h4">
-                                ¿Seguro que deseas matar a este inocente?
+                                Delete order?
                             </Typography>
 
                             <Typography variant="h6">
-                                Order: {order.id}
+                                Order ID : <br /> {order.id}
                             </Typography>
 
                             <Stack direction={'row'} spacing={6}>
@@ -78,7 +78,7 @@ export default function OrderModalDelete({ row }) {
                                 </Button>
 
                                 <Button onClick={handleDelete} variant="contained" color="error" endIcon={<DeleteRoundedIcon sx={{ fontSize: 'h1.fontSize' }} />} sx={{ width: 'auto' }}>
-                                    Matar
+                                    Delete
                                 </Button>
                             </Stack>
                         </Stack>
