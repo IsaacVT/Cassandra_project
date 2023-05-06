@@ -74,7 +74,7 @@ export default function ProductGridNew() {
             </Grid>
 
             <Grid item xs={5}>
-                <Stack spacing={5} sx={{ mt: 7 }}>
+                <Stack spacing={5} sx={{ mt: 7, pr: 3 }}>
                     <TextField
                         required
                         name="name"

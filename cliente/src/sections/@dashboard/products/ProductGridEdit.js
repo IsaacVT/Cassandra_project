@@ -117,7 +117,7 @@ export default function ProductGridEdit({ product }) {
             </Grid>
 
             <Grid item xs={5}>
-                <Stack spacing={5} sx={{ mt: 7 }}>
+                <Stack spacing={5} sx={{ mt: 7, pr: 3 }}>
                     <TextField
                         required
                         name="name"
@@ -128,36 +128,30 @@ export default function ProductGridEdit({ product }) {
                         }}
                     />
 
-                    <Stack spacing={3} direction='row'>
-                        <TextField
-                            required
-                            name="stock"
-                            label="Stock"
-                            value={stock}
-                            onChange={(event) => {
-                                setStock(event.target.value);
-                            }}
-                        />
+                    <TextField
+                        required
+                        name="stock"
+                        label="Stock"
+                        value={stock}
+                        onChange={(event) => {
+                            setStock(event.target.value);
+                        }}
+                    />
 
-                        <TextField
-                            required
-                            name="price"
-                            label="Price"
-                            value={price}
-                            onChange={(event) => {
-                                setPrice(event.target.value);
-                            }}
-                        />
-                    </Stack>
-
-                    <Button type="submit" variant="contained" color="secondary" endIcon={<AddCircleOutlineRoundedIcon />} onClick={prepareProduct} sx={{ width: 'auto' }} disabled={!isEnabled}>
-                        Actualizar
-                    </Button>
+                    <TextField
+                        required
+                        name="price"
+                        label="Price"
+                        value={price}
+                        onChange={(event) => {
+                            setPrice(event.target.value);
+                        }}
+                    />
                 </Stack>
             </Grid>
 
             <Grid item xs={6.5}>
-                <Stack direction={'row'} justifyContent="space-between">
+                <Stack direction={'row'} spacing={5}>
                     <Button variant="contained" component='label' color="secondary" startIcon={<UploadFileRoundedIcon />} onChange={(event) => {
                         setImage(event.target.files[0]);
                         setPreview(URL.createObjectURL(event.target.files[0]));
