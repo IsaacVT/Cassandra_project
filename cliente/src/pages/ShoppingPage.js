@@ -61,8 +61,8 @@ export default function ShoppingPage() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align='center' colSpan={8} sx={{ fontSize: '15px' }}>Shoppings</TableCell>
-                                    <TableCell align='right' colSpan={2}>
+                                    <TableCell align='right' colSpan={9} sx={{ fontSize: '15px' }}>Purchase supply orders</TableCell>
+                                    <TableCell align='right' colSpan={1}>
                                         <ShoppingModalNew />
                                     </TableCell>
                                 </TableRow>
@@ -98,12 +98,12 @@ export default function ShoppingPage() {
 
                                         <TableRow>
                                             <TableCell colSpan={10}>
-                                                <Divider>SHOPPING: {id}</Divider>
+                                                <Divider>Purchase supply : {id}</Divider>
                                             </TableCell>
                                         </TableRow>
 
                                         <TableRow>
-                                            <TableCell colSpan={9} align='left'>Provider : {name}</TableCell>
+                                            <TableCell colSpan={9} align='left'>Supplier name : {name}</TableCell>
                                             <TableCell colSpan={1} align='right'>
                                                 <IconButton size="large" color="inherit" onClick={(event) => {
                                                     setOpen(event.currentTarget)
@@ -121,7 +121,7 @@ export default function ShoppingPage() {
                                         </TableRow>
 
                                         {Object.values(products).map((product) => (
-                                            <TableRow key={product.name}>
+                                            <TableRow key={product.id}>
                                                 <TableCell colSpan={4} align='left'>{product.name}</TableCell>
                                                 <TableCell colSpan={2} align='center'>{product.amount}</TableCell>
                                                 <TableCell colSpan={2} align='center'>{fCurrency(product.price)}</TableCell>

@@ -67,14 +67,14 @@ const ShoppingButton = () => {
         <Stack spacing={3} sx={{ mb: 3 }} direction="row" justifyContent="center" alignItems="center">
           <Paper>
             <TextField
-              label="Proveedor"
+              label="Supplier"
               value={provider}
               onChange={(event) => setProvider(event.target.value)}
               fullWidth
               margin="normal"
             />
           </Paper>
-          <Button onClick={handleAddProduct} variant="contained" color="primary" size="large">
+          <Button onClick={handleAddProduct} variant="contained" color="primary" size="large" disabled={products.length === 5}>
             Add product
           </Button>
         </Stack>
@@ -84,9 +84,9 @@ const ShoppingButton = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Nombre</TableCell>
-                <TableCell>Cantidad</TableCell>
-                <TableCell>Precio</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Quantity</TableCell>
+                <TableCell>Price</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -152,7 +152,7 @@ const ShoppingButton = () => {
           disabled={products.length === 0 || provider === ''}
           color="primary"
         >
-          Enviar datos
+          Register
         </Button>
       </Grid>
     </Grid>

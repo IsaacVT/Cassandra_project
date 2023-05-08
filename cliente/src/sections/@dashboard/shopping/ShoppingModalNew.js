@@ -44,7 +44,7 @@ export default function ProductModalNew() {
 
     return (
         <>
-            <Button variant="outlined" onClick={handleOpen} startIcon={<AddCircleOutlineRoundedIcon />} > Add Shopping</Button>
+            <Button variant="outlined" onClick={handleOpen} startIcon={<AddCircleOutlineRoundedIcon />} > Add order</Button>
 
             <Modal open={open} >
                 <Grid sx={{ ...style, width: 700 }} container spacing={1}>
@@ -54,7 +54,7 @@ export default function ProductModalNew() {
                         </IconButton>
                     </Button>
 
-                    <ShoppingButton/>
+                    <ShoppingButton />
                 </Grid>
             </Modal>
         </ >
