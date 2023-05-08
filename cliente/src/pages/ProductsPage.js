@@ -23,7 +23,7 @@ export default function ProductsPage() {
           name: product.name,
           stock: product.amount,
           price: product.price,
-          description: 'Belle oze amariyo, semidesnude acompañado de flores varias',
+          description: `This product offers the highest quality and beauty. With meticulous attention to detail, each ${product.name.toLowerCase()} is carefully chosen to ensure it meets the most demanding standards.`,
           cover: product.cover || DefaultImg,
         }))
       );
@@ -49,7 +49,7 @@ export default function ProductsPage() {
             {edit && <ProductModalNew className={edit ? 'show-element' : null} />}
 
             <Button onClick={() => setEdit(!edit)} variant="outlined">
-              {edit ? `Cloose editor` : `Open editor`}
+              {edit ? `Close editor` : `Open editor`}
             </Button>
           </Stack>
         </Stack>

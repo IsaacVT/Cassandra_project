@@ -113,7 +113,7 @@ export default function ShoppingGridNew() {
             disabled={products.length === 0 || productQuantity === 0 || price === 0}
             onClick={addShopping}
           >
-            Agregar
+            Add
           </Button>
         </Stack>
       </Grid>
