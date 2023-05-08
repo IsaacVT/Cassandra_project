@@ -13,7 +13,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Stack
+  Stack,
 } from '@mui/material';
 
 import { AddNewShopping, GetProductsNames } from '../../../services/shopping-service';
@@ -24,7 +24,9 @@ const ShoppingButton = () => {
   const [products, setProducts] = useState([{ name: '', amount: 0, price: 0 }]);
 
   const handleAddProduct = () => {
-    setProducts([...products, { name: '', amount: 0, price: 0 }]);
+    if (products.length < 5) {
+      setProducts([...products, { name: '', amount: 0, price: 0 }]);
+    }
   };
 
   const handleProductChange = (index, field, value) => {
@@ -35,7 +37,7 @@ const ShoppingButton = () => {
 
   const handleSubmit = () => {
     const newShopping = {
-      provider_name:provider,
+      provider_name: provider,
       products: products.map((product) => JSON.stringify(product)),
     };
 
@@ -61,22 +63,20 @@ const ShoppingButton = () => {
   }, []);
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} >
-        <Stack spacing={3} sx={{ mb: 3 }} direction="row"
-  justifyContent="center"
-  alignItems="center">
-        <Paper>
-          <TextField
-            label="Proveedor"
-            value={provider}
-            onChange={(event) => setProvider(event.target.value)}
-            fullWidth
-            margin="normal"
-          />
-        </Paper>
-        <Button onClick={handleAddProduct} variant="contained" color="primary" size='large' >
-          Agregar producto
-        </Button>
+      <Grid item xs={12}>
+        <Stack spacing={3} sx={{ mb: 3 }} direction="row" justifyContent="center" alignItems="center">
+          <Paper>
+            <TextField
+              label="Proveedor"
+              value={provider}
+              onChange={(event) => setProvider(event.target.value)}
+              fullWidth
+              margin="normal"
+            />
+          </Paper>
+          <Button onClick={handleAddProduct} variant="contained" color="primary" size="large">
+            Agregar producto
+          </Button>
         </Stack>
       </Grid>
       <Grid item xs={12}>
@@ -93,9 +93,11 @@ const ShoppingButton = () => {
               {products.map((product, index) => (
                 <TableRow key={index}>
                   <TableCell>
-                    <FormControl sx={{
-                      width: 200,
-                    }}>
+                    <FormControl
+                      sx={{
+                        width: 200,
+                      }}
+                    >
                       <InputLabel id="shipment-label">Product</InputLabel>
                       <Select
                         labelid="shipment-label"
@@ -143,8 +145,13 @@ const ShoppingButton = () => {
         </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Button onClick={handleSubmit} variant="contained" fullWidth
-        disabled={products.length === 0 || provider === ''}color="primary">
+        <Button
+          onClick={handleSubmit}
+          variant="contained"
+          fullWidth
+          disabled={products.length === 0 || provider === ''}
+          color="primary"
+        >
           Enviar datos
         </Button>
       </Grid>
