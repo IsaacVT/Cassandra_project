@@ -52,7 +52,7 @@ export default function ShoppingPage() {
     return (
         <>
             <Helmet>
-                <title> Shopping | TFlores </title>
+                <title> Supplier | TFlores </title>
             </Helmet>
 
             <Container>

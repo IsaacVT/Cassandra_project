@@ -17,7 +17,7 @@ const navConfig = [
     icon: icon('ic_bag'),
   },
   {
-    title: 'shopping',
+    title: 'Supplier',
     path: '/dashboard/shopping',
     icon: icon('ic_cart'),
   },
