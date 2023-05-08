@@ -23,7 +23,7 @@ export default function ProductsPage() {
           name: product.name,
           stock: product.amount,
           price: product.price,
-          description: `Beautiful ${product.name}`,
+          description: `This product offers the highest quality and beauty. With meticulous attention to detail, each ${product.name.toLowerCase()} is carefully chosen to ensure it meets the most demanding standards.`,
           cover: product.cover || DefaultImg,
         }))
       );
