@@ -59,6 +59,7 @@ public class InventoryServiceImp implements InventoryService {
             prodExists.setAmount(product.getAmount());
             prodExists.setPrice(product.getPrice());
             prodExists.setCover(product.getCover());
+            prodExists.setDescription(product.getDescription());
 
             EntityWriteResult<Inventory> updateProd = template.update(prodExists, queryOptions.updateOptions());
             return updateProd.getEntity();

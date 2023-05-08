@@ -20,4 +20,5 @@ public class Inventory {
     private Integer amount;
     private BigDecimal price;
     private String cover;
+    private String description;
 }
