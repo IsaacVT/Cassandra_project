@@ -130,7 +130,7 @@ export default function ProductGridNew() {
             <Grid item xs={5.5} textAlign='right'>
                 <Button type="submit" variant="contained" color="secondary" endIcon={<AddCircleOutlineRoundedIcon />}
                     disabled={name.length === 0 || stock === 0 || price === 0 || image === null} onClick={uploadImg}>
-                    Agregar
+                    Add
                 </Button>
             </Grid>
 

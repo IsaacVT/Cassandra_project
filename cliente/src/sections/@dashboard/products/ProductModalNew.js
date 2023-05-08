@@ -41,7 +41,7 @@ export default function ProductModalNew() {
 
     return (
         <>
-            <Button variant="outlined" onClick={handleOpen} startIcon={<AddCircleOutlineRoundedIcon />} > Agregar producto </Button>
+            <Button variant="outlined" onClick={handleOpen} startIcon={<AddCircleOutlineRoundedIcon />} > Add product </Button>
 
             <Modal open={open} >
                 <Grid sx={{ ...style, width: 700 }} container spacing={1}>

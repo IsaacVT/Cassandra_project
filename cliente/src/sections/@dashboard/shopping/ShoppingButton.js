@@ -75,7 +75,7 @@ const ShoppingButton = () => {
             />
           </Paper>
           <Button onClick={handleAddProduct} variant="contained" color="primary" size="large">
-            Agregar producto
+            Add product
           </Button>
         </Stack>
       </Grid>
