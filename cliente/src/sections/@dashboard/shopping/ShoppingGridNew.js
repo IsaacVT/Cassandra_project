@@ -101,7 +101,7 @@ export default function ShoppingGridNew() {
                   </MenuItem>
                 ))
               ) : (
-                <MenuItem value={''}>No Productos</MenuItem>
+                <MenuItem value={''}>No Products</MenuItem>
               )}
             </Select>
           </FormControl>
